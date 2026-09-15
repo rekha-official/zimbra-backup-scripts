@@ -3,6 +3,7 @@
 set -o pipefail
 
 ## Konfigurasi
+DATE=$(date +"%d%m%y")
 SCRIPT_BASE="/opt/zimbra/script"
 CONFIG="${SCRIPT_BASE}/rkp.cf"
 BACKUP_BASE="/opt/zimbra/backup"
@@ -42,9 +43,6 @@ send_telegram() {
 write_log() {
         echo "$(date +"%Y%m%d_%H:%M:%S") : $1" >> "$LOG_FILE"
 }
-
-## Penamaan Folder menggunakan tanggal
-DATE=$(date +"%d%m%y")
 
 ## zmmailbox location
 ZMBOX=/opt/zimbra/bin/zmmailbox
