@@ -4,7 +4,7 @@ set -o pipefail
 
 ## Configuration
 SCRIPT_BASE="/opt/zimbra/script"
-CONFIG="${SCRIPT_BASE}/rkp.conf"
+CONFIG="${SCRIPT_BASE}/rkp.cf"
 BACKUP_BASE="/opt/zimbra/backup/ldap-backup"
 LOG_DIR="${SCRIPT_BASE}/log"
 LOG_FILE="${LOG_DIR}/backup-ldap.log"
