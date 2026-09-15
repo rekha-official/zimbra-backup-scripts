@@ -24,6 +24,7 @@ fi
 ## Create Folder Log
 if [ ! -d $LOG_DIR ]; then
 	mkdir -p "$LOG_DIR"
+	chown zimbra:zimbra -R "$LOG_DIR"
 fi
 
 ## Logging
