@@ -27,10 +27,10 @@ if ! source "$CONFIG"; then
     exit 1
 fi
 
-## Create Folder Log
+## Cek Folder Log
 if [ ! -d $LOG_DIR ]; then
-	mkdir -p "$LOG_DIR"
-	chown zimbra:zimbra "$LOG_DIR"
+	echo "[INFO]: Folder $LOG_DIR belum ada.."
+	exit 1
 fi
 
 ## eksekusi ke file log
@@ -99,6 +99,7 @@ while read -r db; do
 		echo "Dumped $db";
 done < "$DUMPDIR/mysql.db.list"
 
+END_TIME=$(date +"%H:%M:%S")
 send_telegram \
 "<b>[MYSQL BACKUP]</b>
 <pre>
