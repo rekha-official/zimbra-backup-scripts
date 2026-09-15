@@ -100,14 +100,14 @@ while read -r db; do
 done < "$DUMPDIR/mysql.db.list"
 
 send_telegram \
-	"<b>[MYSQL BACKUP]</b>
-    <pre>
-    Host       : $HOST
-    Status     : $BACKUP_STATUS
-    Start Time : ${START_TIME}
-    End Time   : ${END_TIME}
-    Backup     : $DUMPDIR
-    </pre>"
+"<b>[MYSQL BACKUP]</b>
+<pre>
+Host       : $HOST
+Status     : $BACKUP_STATUS
+Start Time : ${START_TIME}
+End Time   : ${END_TIME}
+Backup     : $DUMPDIR
+</pre>"
 
 ## Pembersihan data backup yang lebih dari 7 hari
 find "$BACKUP_BASE" \
