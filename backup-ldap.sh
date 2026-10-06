@@ -65,7 +65,7 @@ if [ ! -d $DUMPDIR ]; then
 	echo "[INFO] Berhasil membuat folder backup: ${DUMPDIR}"
 else
 	echo "[ERROR] Gagal membuat folder backup: ${DUMPDIR}"
-	send_telegram "[ERROR] Gagal membuat folder backup atau folder sudah ada"
+	send_telegram "[$HOST]: Gagal membuat folder backup atau folder sudah ada"
 fi
 
 echo "[INFO] Host        : $HOST"
