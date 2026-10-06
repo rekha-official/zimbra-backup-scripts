@@ -65,7 +65,13 @@ if [ ! -d $DUMPDIR ]; then
 	echo "[INFO] Berhasil membuat folder backup: ${DUMPDIR}"
 else
 	echo "[ERROR] Gagal membuat folder backup: ${DUMPDIR}"
-	send_telegram "[$HOST]: Gagal membuat folder backup atau folder sudah ada"
+	send_telegram \
+	"<b>[LDAP BACKUP]</b>
+	<pre>
+	Host    : ${HOST}
+	Status  : Gagal membuat folder backup atau folder sudah ada.
+	Folder  : $DUMPDIR
+	</pre>"
 fi
 
 echo "[INFO] Host        : $HOST"
@@ -102,13 +108,14 @@ if [ "$BACKUP_STATUS" -eq 0 ]; then
 	echo "[INFO] End Time : ${END_TIME}"
 	
 	send_telegram \
-		"<b>[LDAP BACKUP]</b>
-		<pre>
-		Host       : ${HOST}
-		Status     : FINISHED
-		Start Time : ${START_TIME}
-		End Time   : ${END_TIME}
-		Backup     : $DUMPDIR</pre>"
+	"<b>[LDAP BACKUP]</b>
+	<pre>
+	Host       : ${HOST}
+	Status     : FINISHED
+	Start Time : ${START_TIME}
+	End Time   : ${END_TIME}
+	Backup     : $DUMPDIR
+	</pre>"
 
 else
 	echo "[ERROR] LDAP backup failed..."
