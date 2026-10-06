@@ -21,10 +21,13 @@ if ! source "$CONFIG"; then
     exit 1
 fi
 
-## Create Folder Log
+## Check Log Directory
 if [ ! -d $LOG_DIR ]; then
 	mkdir -p "$LOG_DIR"
 	chown zimbra:zimbra -R "$LOG_DIR"
+	echo "[INFO]: Folder $LOG_DIR belum ada, folder berhasil dibuat."
+else
+	echo "[INFO]: Folder $LOG_DIR sudah ada."
 fi
 
 ## Logging
@@ -114,13 +117,13 @@ else
 
 fi
 
-##Menghapus folder backup ldap lebih dari 7 hari
+## Menghapus folder backup ldap lebih dari 10 hari
 find "$BACKUP_BASE" \
 	-mindepth 1 \
 	-maxdepth 1 \
 	-type d \
 	-name "ldap-*" \
-	-mtime +7 \
+	-mtime +10 \
 	-print \
 	-exec rm -rf {} +;
 
