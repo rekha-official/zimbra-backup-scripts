@@ -18,19 +18,21 @@ fi
 ## Check Telegram Config
 if [ ! -f "$CONFIG" ]; then
     echo "ERROR: Telegram config not found: $CONFIG"
-    exit 1
 fi
 
 ## Load Configuration
 if ! source "$CONFIG"; then
     echo "[ERROR] Failed to load configuration: $CONFIG"
-    exit 1
 fi
 
 ## Cek Folder Log
 if [ ! -d $LOG_DIR ]; then
-	echo "[INFO]: Folder $LOG_DIR belum ada.."
-	exit 1
+	mkdir -p "$LOG_DIR"
+	chown zimbra:zimbra
+	
+	echo "[INFO]: Folder $LOG_DIR belum ada, folder berhasil dibuat."
+else
+	echo "[INFO]: Folder $LOG_DIR sudah ada."
 fi
 
 ## eksekusi ke file log
@@ -110,12 +112,12 @@ End Time   : ${END_TIME}
 Backup     : $DUMPDIR
 </pre>"
 
-## Pembersihan data backup yang lebih dari 7 hari
+## Pembersihan data backup yang lebih dari 10 hari
 find "$BACKUP_BASE" \
 	-mindepth 1 \
 	-maxdepth 1 \
 	-type d \
 	-name "mysql-*" \
-	-mtime +7 \
+	-mtime +10 \
 	-print \
 	-exec rm -rf {} +
