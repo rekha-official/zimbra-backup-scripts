@@ -64,7 +64,7 @@ if [ ! -d $DUMPDIR ]; then
 	chmod 750 "$DUMPDIR"
 	echo "[INFO] Berhasil membuat folder backup: ${DUMPDIR}"
 else
-	echo "[ERROR] Gagal membuat folder backup: ${DUMPDIR}"
+	echo "[ERROR] Gagal membuat folder backup: ${DUMPDIR} atau folder sudah ada.."
 	send_telegram \
 	"<b>[LDAP BACKUP]</b>
 	<pre>
